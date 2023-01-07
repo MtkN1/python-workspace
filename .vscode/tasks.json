@@ -1,0 +1,29 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Creates a basic Python workspace",
+            "type": "shell",
+            "command": "poetry run python src/init.py",
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "Creates a new Python project",
+            "type": "shell",
+            "command": "poetry run python src/new.py",
+            "problemMatcher": []
+        },
+        {
+            "label": "Clean .workspaces folder",
+            "type": "shell",
+            "command": "poetry run python src/clean.py",
+            "problemMatcher": []
+        }
+    ]
+}

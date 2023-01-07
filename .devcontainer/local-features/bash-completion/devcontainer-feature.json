@@ -1,0 +1,7 @@
+{
+    "id": "bash-completion",
+    "name": "bash-completion",
+    "installsAfter": [
+        "ghcr.io/devcontainers/features/common-utils"
+    ]
+}

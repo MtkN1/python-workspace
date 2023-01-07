@@ -1,0 +1,49 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/python
+{
+	"name": "Python 3 Workspace",
+	"image": "mcr.microsoft.com/devcontainers/python:0-${localEnv:VARIANT:3.11-bullseye}",
+	"features": {
+		"ghcr.io/devcontainers/features/docker-in-docker:2": {},
+		"./local-features/bash-completion": {},
+		"./local-features/poetry": {}
+	},
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"GitHub.vscode-pull-request-github",
+				"eamodio.gitlens",
+				"be5invis.toml",
+				"ms-python.black-formatter",
+				"ms-python.flake8"
+			],
+			"settings": {
+				"[python]": {
+					"editor.defaultFormatter": "ms-python.black-formatter",
+					"editor.formatOnSave": true,
+					"editor.codeActionsOnSave": {
+						"source.organizeImports": true
+					}
+				},
+				"isort.args": [
+					"--profile",
+					"black"
+				],
+				"python.defaultInterpreterPath": "${workspaceFolder}/.venv",
+				"python.linting.pylintEnabled": false,
+				"python.interpreter.infoVisibility": "always",
+				"flake8.args": [
+					"--max-line-length",
+					"88",
+					"--extend-ignore",
+					"E203"
+				],
+				"files.exclude": {
+					"**/.venv": true
+				}
+			}
+		}
+	},
+	"postCreateCommand": "./.devcontainer/post-install.sh",
+	"waitFor": "postCreateCommand"
+}
