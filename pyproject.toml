@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "python-workspace"
+name = "python-workspaces"
 version = "0.1.0"
 description = ""
 authors = ["MtkN1 <51289448+MtkN1@users.noreply.github.com>"]

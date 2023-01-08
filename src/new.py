@@ -4,8 +4,8 @@ from pathlib import Path
 
 from names_generator import generate_name
 
-WORKSPACES_PATH = Path(".workspaces")
-CODE_WORKSPACE_PATH = Path("workspace.code-workspace")
+WORKSPACES_PATH = Path.cwd().parent
+CODE_WORKSPACE_PATH = Path("workspaces.code-workspace")
 
 
 def main():
@@ -13,7 +13,7 @@ def main():
     random_name = generate_name()
 
     # Create a new project and virtualenv
-    new_workspace_path = Path(WORKSPACES_PATH, random_name)
+    new_workspace_path = WORKSPACES_PATH.joinpath(random_name)
     subprocess.run(["poetry", "new", "--src", new_workspace_path], check=True)
     subprocess.run(
         ["virtualenv", "--prompt", random_name, new_workspace_path.joinpath(".venv")],

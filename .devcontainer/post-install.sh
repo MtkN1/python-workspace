@@ -14,7 +14,7 @@ else
 fi
 
 if [[ "$(virtualenv --version)" != "" ]]; then
-    virtualenv --prompt python-workspace .venv
+    virtualenv --prompt python-workspaces .venv
 else
     "(*) Error: Need to install virtualenv."
 fi
@@ -23,8 +23,10 @@ if [ -f "./pyproject.toml" ]; then
     poetry install --no-root
 fi
 
-if [ ! -f "./workspace.code-workspace" ]; then
-    cp ./.devcontainer/default-workspace.json ./workspace.code-workspace
+if [ ! -f "./workspaces.code-workspace" ]; then
+    cp ./.devcontainer/default-workspaces.json ./workspaces.code-workspace
 fi
+
+sudo chmod a+w `dirname $PWD`
 
 echo "Done!"

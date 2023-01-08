@@ -1,12 +1,19 @@
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the
 // README at: https://github.com/devcontainers/templates/tree/main/src/python
 {
-	"name": "Python 3 Workspace",
+	"name": "Python 3 Workspaces",
 	"image": "mcr.microsoft.com/devcontainers/python:0-${localEnv:VARIANT:3.11-bullseye}",
+	"mounts": [
+		{
+			"source": "python-workspaces-volume",
+			"target": "/workspaces",
+			"type": "volume"
+		}
+	],
 	"features": {
-		"ghcr.io/devcontainers/features/docker-in-docker:2": {},
+		"./local-features/poetry": {},
 		"./local-features/bash-completion": {},
-		"./local-features/poetry": {}
+		"ghcr.io/devcontainers/features/docker-in-docker:2": {}
 	},
 	"customizations": {
 		"vscode": {
@@ -23,15 +30,18 @@
 					"editor.formatOnSave": true,
 					"editor.codeActionsOnSave": {
 						"source.organizeImports": true
-					}
+					},
+					"editor.rulers": [
+						88
+					]
 				},
 				"isort.args": [
 					"--profile",
 					"black"
 				],
 				"python.defaultInterpreterPath": "${workspaceFolder}/.venv",
-				"python.linting.pylintEnabled": false,
 				"python.interpreter.infoVisibility": "always",
+				"python.linting.pylintEnabled": false,
 				"flake8.args": [
 					"--max-line-length",
 					"88",
