@@ -14,9 +14,7 @@ def main():
     with open(CODE_WORKSPACE_PATH) as fp:
         code_workspace = json.load(fp)
 
-    workspace_paths = {
-        str(Path(x["path"]).absolute()) for x in code_workspace["folders"]
-    }
+    workspace_paths = {str(Path(x["path"])) for x in code_workspace["folders"]}
 
     with os.scandir(WORKSPACES_PATH) as it:
         for entry in it:
