@@ -4,9 +4,9 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "Creates a basic Python workspace",
+            "label": "init",
             "type": "shell",
-            "command": "poetry run python src/init.py",
+            "command": "poetry run python scripts/init.py",
             "problemMatcher": [],
             "group": {
                 "kind": "build",
@@ -14,15 +14,15 @@
             }
         },
         {
-            "label": "Creates a new Python project",
+            "label": "new",
             "type": "shell",
-            "command": "poetry run python src/new.py",
+            "command": "poetry run python scripts/new.py",
             "problemMatcher": []
         },
         {
-            "label": "Clean .workspaces folder",
+            "label": "clean",
             "type": "shell",
-            "command": "poetry run python src/clean.py",
+            "command": "poetry run python scripts/clean.py",
             "problemMatcher": []
         }
     ]

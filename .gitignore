@@ -129,4 +129,4 @@ dmypy.json
 .pyre/
 
 # python-workspaces
-workspaces.code-workspace
+python-workspaces.code-workspace

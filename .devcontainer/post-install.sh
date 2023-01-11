@@ -23,10 +23,8 @@ if [ -f "./pyproject.toml" ]; then
     poetry install --no-root
 fi
 
-if [ ! -f "./workspaces.code-workspace" ]; then
-    cp ./.devcontainer/default-workspaces.json ./workspaces.code-workspace
+if [ ! -f "./python-workspaces.code-workspace" ]; then
+    cp ./code-workspace.json ./python-workspaces.code-workspace
 fi
-
-sudo chmod a+w `dirname $PWD`
 
 echo "Done!"

@@ -4,21 +4,19 @@ from pathlib import Path
 
 from names_generator import generate_name
 
-WORKSPACES_PATH = Path.cwd().parent
-CODE_WORKSPACE_PATH = Path("workspaces.code-workspace")
+WORKSPACES_PATH = Path("src")
+CODE_WORKSPACE_PATH = Path("python-workspaces.code-workspace")
 
 
 def main():
     # Generate a random name
     random_name = generate_name()
 
-    # Create a new project and virtualenv
+    # Create a virtual environment and pyproject.toml file
     new_workspace_path = WORKSPACES_PATH.joinpath(random_name)
-    subprocess.run(["poetry", "new", "--src", new_workspace_path], check=True)
-    subprocess.run(
-        ["virtualenv", "--prompt", random_name, new_workspace_path.joinpath(".venv")],
-        check=True,
-    )
+    venv_dest = new_workspace_path.joinpath(".venv")
+    subprocess.run(["virtualenv", "--prompt", random_name, venv_dest], check=True)
+    subprocess.run(["poetry", "init", "-n"], cwd=new_workspace_path, check=True)
 
     # Edit .code-workspace
     with open(CODE_WORKSPACE_PATH) as fp:
@@ -28,6 +26,10 @@ def main():
 
     with open(CODE_WORKSPACE_PATH, "w") as fp:
         code_workspace = json.dump(code_workspace, fp, indent="\t")
+
+    # Create and open main.py
+    subprocess.run(["touch", "main.py"], cwd=new_workspace_path, check=True)
+    subprocess.run(["code", "main.py"], cwd=new_workspace_path, check=True)
 
     print("Done!")
 

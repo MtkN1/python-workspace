@@ -3,8 +3,8 @@ import os
 import subprocess
 from pathlib import Path
 
-WORKSPACES_PATH = Path.cwd().parent
-CODE_WORKSPACE_PATH = Path("workspaces.code-workspace")
+WORKSPACES_PATH = Path("src")
+CODE_WORKSPACE_PATH = Path("python-workspaces.code-workspace")
 
 
 def main():

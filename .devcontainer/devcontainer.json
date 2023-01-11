@@ -3,23 +3,13 @@
 {
 	"name": "Python 3 Workspaces",
 	"image": "mcr.microsoft.com/devcontainers/python:0-${localEnv:VARIANT:3.11-bullseye}",
-	"mounts": [
-		{
-			"source": "python-workspaces-volume",
-			"target": "/workspaces",
-			"type": "volume"
-		}
-	],
 	"features": {
-		"./local-features/poetry": {},
 		"./local-features/bash-completion": {},
-		"ghcr.io/devcontainers/features/docker-in-docker:2": {}
+		"./local-features/poetry": {}
 	},
 	"customizations": {
 		"vscode": {
 			"extensions": [
-				"GitHub.vscode-pull-request-github",
-				"eamodio.gitlens",
 				"be5invis.toml",
 				"ms-python.black-formatter",
 				"ms-python.flake8"
